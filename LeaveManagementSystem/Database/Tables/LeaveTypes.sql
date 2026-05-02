@@ -1,0 +1,9 @@
+﻿CREATE TABLE LeaveTypes(
+	[Id]				INT				NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	[Name]				NVARCHAR(200)	NOT NULL,
+	[Code]				NVARCHAR(200)	NOT NULL,
+	[MaxPerYear]		INT				NOT NULL,
+	[IsCarryForward]	BIT				NOT NULL,
+	[RequiresApproval]	BIT				NOT NULL DEFAULT 1,
+	[CreatedOn]			DATETIME2		NOT NULL DEFAULT GETDATE(),
+	[UpdatedOn]			DATETIME2		NOT NULL DEFAULT GETDATE())

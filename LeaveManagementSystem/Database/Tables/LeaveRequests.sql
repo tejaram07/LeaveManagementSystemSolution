@@ -1,0 +1,17 @@
+﻿CREATE TABLE LeaveRequests(
+	[Id]			INT				NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	[UserId]		INT				NOT NULL,
+	[LeaveTypeId]	INT				NOT NULL,
+	[StartDate]		DATE			NOT NULL,
+	[EndDate]		DATE			NOT NULL,
+	[TotalDays]		DECIMAL			NOT NULL,
+	[Reason]		NVARCHAR(400)	NOT NULL,
+	[LeaveStatusId]	INT				NOT NULL,
+	[AppliedOn]		DATE			NOT NULL,
+	[IsHalfDay]		BIT				NOT NULL,
+	[HalfDayType]	NVARCHAR(200)	NULL,
+	[CreatedOn]		DATETIME2		NOT NULL DEFAULT GETDATE(),
+	[UpdatedOn]		DATETIME2		NOT NULL DEFAULT GETDATE(),
+	CONSTRAINT FK_LeaveRequests_UserId_Users_Id FOREIGN KEY (UserId) REFERENCES Users(Id),
+	CONSTRAINT FK_LeaveRequests_LeaveTypeId_leaveTypes_Id FOREIGN KEY (LeaveTypeId) REFERENCES LeaveTypes(Id),
+	CONSTRAINT FK_LeaveRequests_LeaveStatusId_leaveStatusTypes_Id FOREIGN KEY (LeaveStatusId) REFERENCES LeaveStatusTypes(Id))
